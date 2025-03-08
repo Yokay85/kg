@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equilateral Triangles</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <main>
+        <div class="container">
+            <div class="box">
+                <h1>Coordinate Plane with Triangles</h1>
+                <canvas id="canvas" class="canvas"></canvas>
+            </div>
+            <div class="controll">
+                <div class="triangle-form">
+                    <h3>Add Equilateral Triangle</h3>
+                    <div class="form-group">
+                        <label>First Vertex (x1, y1):</label>
+                        <input type="number" id="x1" placeholder="X1" step="0.5">
+                        <input type="number" id="y1" placeholder="Y1" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label>Second Vertex (x2, y2):</label>
+                        <input type="number" id="x2" placeholder="X2" step="0.5">
+                        <input type="number" id="y2" placeholder="Y2" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label>Fill Color:</label>
+                        <input type="color" id="fillColor" value="#3498db">
+                    </div>
+                    <div class="form-group">
+                        <label>Vertex Style:</label>
+                        <select id="vertexStyle">
+                            <option value="circle">Circle</option>
+                            <option value="square">Square</option>
+                        </select>
+                    </div>
+                    <button id="addTriangle">Add Triangle</button>
+                </div>
+                
+                <div class="triangle-list">
+                    <h3>Triangles</h3>
+                    <ul id="triangleList"></ul>
+                </div>
+                
+                <div class="main-controls">
+                    <button id="reset">Reset View</button>
+                    <button id="clear">Clear All</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="./scripts.js"></script>
+</body>
+</html>

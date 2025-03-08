@@ -1,0 +1,128 @@
+.canvas {
+    box-sizing: border-box;
+    border: 2px solid #000;
+    display: block;
+}
+
+canvas {
+    width: 900px;
+    height: 700px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.controll {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px;
+    width: 300px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-left: 20px;
+}
+
+button {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 100px;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+}
+
+.box h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* New styles */
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="number"] {
+    width: 70px;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.form-group input[type="color"] {
+    width: 50px;
+    height: 30px;
+}
+
+.form-group select {
+    width: 100px;
+    padding: 5px;
+}
+
+.triangle-form, .triangle-list, .main-controls {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.triangle-form h3, .triangle-list h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.triangle-list ul {
+    list-style: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.triangle-list li {
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#addTriangle {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#addTriangle:hover {
+    background-color: #218838;
+}
+
+.delete-triangle {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+.delete-triangle:hover {
+    background-color: #c82333;
+}

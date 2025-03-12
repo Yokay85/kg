@@ -85,8 +85,8 @@ function drawGrid() {
     ctx.fillText('0', offsetX - 10, offsetY + 20);
     
     // Draw arrow heads
-    drawArrow(canvas.width/dpr, offsetY, -10, 5);
-    drawArrow(offsetX, 0, 5, 10);
+    drawArrow(canvas.width/dpr - 10, offsetY, 1, 0); // X-axis arrow
+    drawArrow(offsetX, 10, 0, -1); // Y-axis arrow
     
     // X and Y labels
     ctx.fillText('X', canvas.width/dpr - 10, offsetY - 20);
@@ -96,11 +96,25 @@ function drawGrid() {
     drawTriangles();
 }
 
-function drawArrow(x, y, dx, dy) {
+function drawArrow(x, y, dirX, dirY) {
+    const arrowSize = 15;
+    
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.lineTo(x - dx, y - dy);
-    ctx.lineTo(x - dx, y + dy);
+    
+    // Calculate the points for the arrow head based on direction
+    if (Math.abs(dirX) > Math.abs(dirY)) {
+        // Horizontal arrow (X-axis)
+        const xOffset = dirX * arrowSize;
+        ctx.lineTo(x - xOffset, y - arrowSize/2);
+        ctx.lineTo(x - xOffset, y + arrowSize/2);
+    } else {
+        // Vertical arrow (Y-axis)
+        const yOffset = dirY * arrowSize;
+        ctx.lineTo(x - arrowSize/2, y - yOffset);
+        ctx.lineTo(x + arrowSize/2, y - yOffset);
+    }
+    
     ctx.closePath();
     ctx.fill();
 }

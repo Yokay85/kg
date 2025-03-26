@@ -1,0 +1,267 @@
+.canvas {
+    box-sizing: border-box;
+    border: 2px solid #000;
+    display: block;
+}
+
+canvas {
+    width: 900px;
+    height: 700px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.controll {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px;
+    width: 350px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-left: 20px;
+}
+
+button {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 100px;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+}
+
+.box h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Form controls */
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="number"] {
+    width: 70px;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.form-group input[type="color"] {
+    width: 50px;
+    height: 30px;
+}
+
+/* New Bézier specific styles */
+.bezier-points, .curve-parameters, .action-buttons, .status-message {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    margin-bottom: 15px;
+}
+
+.bezier-points h3, .curve-parameters h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.points-list {
+    margin-top: 15px;
+}
+
+.points-list h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.points-list ul {
+    list-style: none;
+    padding: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+}
+
+.points-list li {
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#addPoint {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#addPoint:hover {
+    background-color: #218838;
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.action-buttons button {
+    flex: 1 0 calc(50% - 5px);
+}
+
+#drawCurve {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+#drawCurve:hover {
+    background-color: #0069d9;
+}
+
+#saveMatrix {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+}
+
+#saveMatrix:hover {
+    background-color: #138496;
+}
+
+.delete-point {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+.delete-point:hover {
+    background-color: #c82333;
+}
+
+.edit-point {
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.edit-point:hover {
+    background-color: #45a049;
+}
+
+.status-message {
+    min-height: 50px;
+}
+
+#message {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.message-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.message-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.message-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Curves list styles */
+.curves-list {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.curves-list h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.curves-list ul {
+    list-style: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.curve-item {
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-curve {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+.delete-curve:hover {
+    background-color: #c82333;
+}
+
+/* Style for the new clear all curves button */
+#clearAllCurves {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+#clearAllCurves:hover {
+    background-color: #c82333;
+}
+
+/* Improved drag cursor styles */
+canvas.point-hover {
+    cursor: grab;
+}
+
+canvas.point-dragging {
+    cursor: grabbing;
+}

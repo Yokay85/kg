@@ -162,7 +162,7 @@ function drawTriangles() {
 // Draw a single triangle
 function drawTriangle(triangle) {
     const { x1, y1, x2, y2, x3, y3, color, vertexStyle } = triangle;
-    
+            
     // Convert to canvas coordinates
     const p1 = graphToCanvas(x1, y1);
     const p2 = graphToCanvas(x2, y2);
@@ -186,6 +186,7 @@ function drawTriangle(triangle) {
     drawVertex(p1.x, p1.y, vertexStyle);
     drawVertex(p2.x, p2.y, vertexStyle);
     drawVertex(p3.x, p3.y, vertexStyle);
+
 }
 
 // Draw a vertex as a square or circle
@@ -242,6 +243,12 @@ function addTriangle() {
         alert('Please enter valid coordinates');
         return;
     }
+
+    // if (Math.abs(x1) > 10 || Math.abs(x2) > 10 || Math.abs(y1) > 10 || Math.abs(y2) > 10)
+    // {
+    //     alert("Not correct coordinates");
+    //     return;
+    // }
     
     // Calculate third vertex
     const thirdVertex = calculateThirdVertex(x1, y1, x2, y2);

@@ -168,6 +168,7 @@ function calculateBezierCurve(controlPoints, numPoints, method = 'parametric', t
         if (method === 'matrix') {
             console.log('Using matrix method');
             point = calculateBezierPointMatrix(controlPoints, t);
+            console.log(point)
         } else {
             point = calculateBezierPoint(controlPoints, t);
         }
@@ -630,6 +631,32 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("==================");
     }
     
+    // Function to save data to a file
+    function saveDataToFile(data, filename) {
+        // Create a blob with the data
+        const blob = new Blob([data], { type: 'text/plain' });
+        
+        // Create a URL for the blob
+        const url = URL.createObjectURL(blob);
+        
+        // Create a link element
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        
+        // Append link to the body
+        document.body.appendChild(link);
+        
+        // Simulate click on the link
+        link.click();
+        
+        // Remove the link from the DOM
+        document.body.removeChild(link);
+        
+        // Release the URL object
+        URL.revokeObjectURL(url);
+    }
+    
     // Add a point from inputs
     addPointButton.addEventListener('click', function() {
         const x = parseFloat(pointXInput.value);
@@ -688,7 +715,6 @@ document.addEventListener('DOMContentLoaded', function() {
             messageDiv.className = 'message-error';
             return;
         }
-        
         const tMin = parseFloat(document.getElementById('tMin').value) || 0;
         const tMax = parseFloat(document.getElementById('tMax').value) || 1;
         const tStep = parseFloat(document.getElementById('tStep').value) || 0.01;
@@ -780,7 +806,7 @@ document.addEventListener('DOMContentLoaded', function() {
         messageDiv.className = 'message-info';
     });
     
-    // Save matrix (now displays the Bezier basis coefficient matrix)
+    // Save matrix (now saves the Bezier basis coefficient matrix to a file)
     document.getElementById('saveMatrix').addEventListener('click', function() {
         if (bezierCurves.length === 0) {
             messageDiv.textContent = 'No curves to save';
@@ -788,34 +814,48 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Display coefficient matrices for each curve
+        // Prepare the data to save to file
+        let fileContent = "BEZIER CURVES DATA EXPORT\n";
+        fileContent += "==========================\n\n";
+        
         bezierCurves.forEach((curve, index) => {
             const n = curve.points.length - 1;
             const bezierMatrix = getBezierMatrix(n);
             
-            // Display matrix in console
-            displayMatrix(bezierMatrix, `Bezier Coefficient Matrix (n=${n}) for Curve #${index + 1}`);
+            fileContent += `=== Bezier Coefficient Matrix (n=${n}) for Curve #${index + 1} ===\n`;
+            fileContent += formatMatrix(bezierMatrix) + "\n\n";
             
-            // Log points for reference
-            console.log(`Curve #${index + 1} Control Points:`, curve.points);
+            fileContent += `Curve #${index + 1} Control Points:\n`;
+            curve.points.forEach((point, pointIndex) => {
+                fileContent += `Point ${pointIndex + 1}: (${point.x.toFixed(2)}, ${point.y.toFixed(2)})\n`;
+            });
+            fileContent += "\n";
             
             if (curve.method === 'matrix') {
                 // Also display a sample calculation for t=0.5 to verify
                 const t = 0.5;
                 const paramVector = Array(n + 1).fill(0).map((_, i) => Math.pow(t, n - i));
                 
-                console.log(`Parameter Vector for t=${t}:`, paramVector);
+                fileContent += `Parameter Vector for t=${t}:\n`;
+                fileContent += paramVector.map(v => v.toFixed(4)).join(", ") + "\n\n";
                 
                 const coefficients = multiplyVectorMatrix(paramVector, bezierMatrix);
-                console.log(`Resulting Coefficients:`, coefficients);
+                fileContent += `Resulting Coefficients:\n`;
+                fileContent += coefficients.map(c => c.toFixed(4)).join(", ") + "\n\n";
                 
                 const point = calculateBezierPointMatrix(curve.points, t);
-                console.log(`Resulting Point at t=${t}:`, point);
+                fileContent += `Resulting Point at t=${t}:\n`;
+                fileContent += `(${point.x.toFixed(4)}, ${point.y.toFixed(4)})\n\n`;
             }
+            
+            fileContent += "Parameters:\n";
+            fileContent += `tMin: ${curve.tMin}, tMax: ${curve.tMax}, tStep: ${curve.tStep}, method: ${curve.method}\n`;
+            fileContent += `Colors: Polyline=${curve.polylineColor}, Curve=${curve.curveColor}\n`;
+            fileContent += "==========================\n\n";
         });
         
-        // Original curve data output
-        const output = bezierCurves.map(curve => {
+        // Create a JSON representation as well
+        const jsonData = bezierCurves.map(curve => {
             return {
                 points: curve.points,
                 parameters: {
@@ -831,8 +871,17 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         });
         
-        console.log('Saved curves data:', output);
-        messageDiv.textContent = 'Bezier matrix coefficients saved to console (press F12 to view)';
+        fileContent += "JSON DATA:\n";
+        fileContent += JSON.stringify(jsonData, null, 2);
+        
+        // Save the data to a file
+        const now = new Date();
+        const timestamp = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}_${now.getHours().toString().padStart(2, '0')}-${now.getMinutes().toString().padStart(2, '0')}`;
+        const filename = `bezier_curves_${timestamp}.txt`;
+        
+        saveDataToFile(fileContent, filename);
+        
+        messageDiv.textContent = `Bezier matrix coefficients saved to file "${filename}"`;
         messageDiv.className = 'message-success';
     });
     

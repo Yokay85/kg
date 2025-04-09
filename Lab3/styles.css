@@ -1,0 +1,155 @@
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+canvas {
+    border: 1px solid #333;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+.controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.parameters {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 800px;
+}
+.parameter {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: #3367d6;
+}
+.color-scheme {
+    margin-top: 20px;
+}
+select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.mode-selector {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.tab {
+    padding: 10px 20px;
+    background-color: #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.tab.active {
+    background-color: #4285f4;
+    color: white;
+}
+.brownian-settings {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 800px;
+}
+
+/* Styles for the fractal gallery */
+#gallery-container {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.thumbnail-placeholder {
+    width: 120px;
+    height: 90px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+}
+
+.gallery-item span {
+    font-size: 14px;
+    text-align: center;
+    color: #333;
+}
+
+.save-button, #save-fractal {
+    background-color: #34a853;
+}
+
+.save-button:hover, #save-fractal:hover {
+    background-color: #2d9047;
+}
+
+#save-fractal {
+    background-color: #34a853;
+}
+
+#save-fractal:hover {
+    background-color: #2d9047;
+}

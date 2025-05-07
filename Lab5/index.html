@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рух паралелограма на площині</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="control-panel">
+            <h1>Рух паралелограма на площині</h1>
+            
+            <div class="form-group">
+                <h3>Введіть координати вершин паралелограма:</h3>
+                <div class="vertices-input">
+                    <div>
+                        <label for="x1">Вершина A (x1, y1):</label>
+                        <input type="number" id="x1" placeholder="x1" value="2">
+                        <input type="number" id="y1" placeholder="y1" value="2">
+                    </div>
+                    <div>
+                        <label for="x2">Вершина B (x2, y2):</label>
+                        <input type="number" id="x2" placeholder="x2" value="6">
+                        <input type="number" id="y2" placeholder="y2" value="2">
+                    </div>
+                    <div>
+                        <label for="x3">Вершина C (x3, y3):</label>
+                        <input type="number" id="x3" placeholder="x3" value="7">
+                        <input type="number" id="y3" placeholder="y3" value="5">
+                    </div>
+                    <div>
+                        <label for="x4">Вершина D (x4, y4):</label>
+                        <input type="number" id="x4" placeholder="x4" value="3">
+                        <input type="number" id="y4" placeholder="y4" value="5">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="pivot-point">Центр обертання:</label>
+                <select id="pivot-point">
+                    <option value="0">Вершина A</option>
+                    <option value="1">Вершина B</option>
+                    <option value="2">Вершина C</option>
+                    <option value="3">Вершина D</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="scale-factor">Коефіцієнт зменшення A:</label>
+                <input type="number" id="scale-factor" min="1.1" step="0.1" value="2">
+            </div>
+            
+            <div class="form-group">
+                <label for="grid-size">Розмір клітинки (px):</label>
+                <input type="number" id="grid-size" min="10" max="100" step="5" value="40">
+            </div>
+            
+            <div class="buttons">
+                <button id="draw-btn">Намалювати</button>
+                <button id="start-btn">Почати рух</button>
+                <button id="stop-btn" disabled>Зупинити</button>
+                <button id="save-matrix-btn">Зберегти матрицю</button>
+                <button id="save-image-btn">Зберегти зображення</button>
+            </div>
+            
+            <div id="error-message" class="error"></div>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="coordinate-plane"></canvas>
+        </div>
+    </div>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>

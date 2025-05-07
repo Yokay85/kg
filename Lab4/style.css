@@ -1,0 +1,85 @@
+body {
+    font-family: sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#controls {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#controls button {
+    margin: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+#controls button:hover {
+    background-color: #45a049;
+}
+
+#controls button:active {
+    background-color: #3e8e41;
+}
+
+#canvases {
+    display: flex;
+    justify-content: space-around; /* Distribute space */
+    align-items: flex-start; /* Align items at the top */
+    margin-top: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 20px; /* Add gap between canvas containers */
+}
+
+#canvases div {
+    text-align: center;
+    margin: 10px;
+    flex: 1; /* Allow divs to grow and shrink */
+    min-width: 300px; /* Minimum width before wrapping */
+}
+
+canvas {
+    border: 1px solid #ccc;
+    max-width: 100%; /* Make canvas responsive within its container */
+    height: auto;    /* Maintain aspect ratio */
+    background-color: white;
+    display: block; /* Remove extra space below canvas */
+    margin: 0 auto; /* Center canvas if container is wider */
+}
+
+#pixelInfo {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e9e9e9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#infoBox {
+    font-family: monospace;
+    white-space: pre;
+    min-height: 100px;
+}
+
+#selectionRectangle {
+    position: absolute;
+    border: 1px dashed #000;
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+    pointer-events: none; /* Allow clicks to go through to the canvas */
+    z-index: 10; /* Ensure it's above the canvas */
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дослідження моделей кольорів</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Перетворення колірних просторів та обробка зображень</h1>
+
+    <input type="file" id="imageLoader" accept="image/*">
+
+    <div id="controls">
+        <button id="cmykToHslBtn">RGB → CMYK → RGB → HSL → RGB</button>
+        <button id="hslToCmykBtn">RGB → HSL → RGB → CMYK → RGB</button>
+        <button id="integrityCheckBtn">Перевірка цілісності</button>
+        <button id="modifyYellowBtn">Змінити жовтий у виділеній області</button>
+        <button id="saveImageBtn">Зберегти оброблене зображення</button>
+        <br>
+        <label for="lightnessIncrease">Зміна яскравості жовтого:</label>
+        <input type="range" id="lightnessIncrease" name="lightnessIncrease" min="-1.0" max="1.0" step="0.01" value="0">
+        <span id="lightnessValue">0.00</span>
+        <p>Клацніть та потягніть на оригінальному зображенні, щоб вибрати область для зміни жовтого.</p>
+    </div>
+
+    <div id="canvases">
+        <div>
+            <h2>Оригінальне зображення</h2>
+            <canvas id="originalCanvas"></canvas>
+        </div>
+        <div>
+            <h2>Оброблене зображення</h2>
+            <canvas id="processedCanvas"></canvas>
+        </div>
+    </div>
+
+    <div id="pixelInfo">
+        <h2>Інформація про піксель (наведіть курсор на оригінальне зображення)</h2>
+        <pre id="infoBox"></pre>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
